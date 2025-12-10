@@ -1,1 +1,26 @@
-<p>header works!</p>
+<header>
+    <div class="h-[7.1rem] w-full relative bg-[url(/images/header_background.png)] bg-cover bg-[center_59%] flex justify-center items-center">
+        <img [routerLink]="['/home']" src="/assets/plandaw_logo.png" alt="PlanDaw Logo" class="w-[110px] absolute left-3 cursor-pointer">
+        <h1 class="text-[3.3rem] font-bold text-white">Plan<span class="text-[3.8rem]">DAW</span></h1>
+    </div>
+    <nav class="bg-[#236D4B] text-[#E9F8E1] text-xl font-bold">
+        <ul class="flex justify-center gap-25 [&>li]:flex [&>li]:gap-2 [&>li]:cursor-pointer [&>li]:p-[0.95rem] [&>li]:hover:bg-[#1d5f41]">
+            <li [routerLink]="['/home']">
+                <fa-icon [icon]="_homeIcon()"></fa-icon>
+                <p>HOME</p>
+            </li>
+            <li [routerLink]="['/ideas']">
+                <fa-icon [icon]="_ideasIcon()"></fa-icon>
+                IDEES
+            </li>
+            <li [routerLink]="['/weekend']">
+                <fa-icon [icon]="_weekendIcon()"></fa-icon>
+                CAP DE SETMANA
+            </li>
+            <li [routerLink]="['/friends']">
+                <fa-icon [icon]="_friendsIcon()"></fa-icon>
+                AMISTATS
+            </li>
+        </ul>
+    </nav>
+</header>

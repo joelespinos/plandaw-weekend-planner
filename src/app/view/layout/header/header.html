@@ -1,26 +1,32 @@
 <header>
-    <div class="h-[7.1rem] w-full relative bg-[url(/images/header_background.png)] bg-cover bg-[center_59%] flex justify-center items-center">
-        <img [routerLink]="['/home']" src="/assets/plandaw_logo.png" alt="PlanDaw Logo" class="w-[110px] absolute left-3 cursor-pointer">
-        <h1 class="text-[3.3rem] font-bold text-white">Plan<span class="text-[3.8rem]">DAW</span></h1>
+    <div class="h-[6.5rem] w-full relative bg-[url(/images/header_background.png)] bg-cover bg-[center_59%] flex justify-center items-center">
+        <img [routerLink]="['/home']" src="/assets/plandaw_logo.png" alt="PlanDaw Logo" class="w-[100px] absolute left-4 cursor-pointer">
+        <h1 class="text-[3rem] font-bold text-white font-poppins">Plan<span class="text-[3.5rem]">DAW</span></h1>
     </div>
-    <nav class="bg-[#236D4B] text-[#E9F8E1] text-xl font-bold">
-        <ul class="flex justify-center gap-25 [&>li]:flex [&>li]:gap-2 [&>li]:cursor-pointer [&>li]:p-[0.95rem] [&>li]:hover:bg-[#1d5f41]">
-            <li [routerLink]="['/home']">
+
+    <nav class="bg-[#236D4B] text-[#E9F8E1] text-xl font-bold p-2 font-poppins shadow-lg">
+        <ul class="flex flex-wrap justify-center gap-x-25 gap-y-2 [&>li]:flex [&>li]:gap-2 [&>li]:cursor-pointer [&>li]:py-1.5 [&>li]:px-3.5 [&>li]:rounded-3xl [&>li]:hover:bg-[#1d5f41] [&>li]:transition-colors [&>li]:duration-250 [&_p]:text-lg">
+            
+            <li [routerLink]="['/home']" [routerLinkActive]="'text-[#ace874] underline decoration-2 underline-offset-3'">
                 <fa-icon [icon]="_homeIcon()"></fa-icon>
                 <p>HOME</p>
             </li>
-            <li [routerLink]="['/ideas']">
+
+            <li [routerLink]="['/ideas']" [routerLinkActive]="'text-[#ace874] underline decoration-2 underline-offset-3'">
                 <fa-icon [icon]="_ideasIcon()"></fa-icon>
-                IDEES
+                <p>IDEES</p>
             </li>
-            <li [routerLink]="['/weekend']">
+
+            <li [routerLink]="['/weekend']" [routerLinkActive]="'text-[#ace874] underline decoration-2 underline-offset-3'">
                 <fa-icon [icon]="_weekendIcon()"></fa-icon>
-                CAP DE SETMANA
+                <p>CAP DE SETMANA</p>
             </li>
-            <li [routerLink]="['/friends']">
+
+            <li [routerLink]="['/friends']" [routerLinkActive]="'text-[#ace874] underline decoration-2 underline-offset-3'">
                 <fa-icon [icon]="_friendsIcon()"></fa-icon>
-                AMISTATS
+                <p>AMISTATS</p>
             </li>
+
         </ul>
     </nav>
 </header>

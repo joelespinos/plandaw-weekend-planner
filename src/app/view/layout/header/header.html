@@ -8,22 +8,22 @@
         <ul class="flex flex-wrap justify-center gap-x-25 gap-y-2 [&>li]:flex [&>li]:gap-2 [&>li]:cursor-pointer [&>li]:py-1.5 [&>li]:px-3.5 [&>li]:rounded-3xl [&>li]:hover:bg-[#1d5f41] [&>li]:transition-colors [&>li]:duration-250 [&_p]:text-lg">
             
             <li [routerLink]="['/home']" [routerLinkActive]="'text-[#ace874] underline decoration-2 underline-offset-3'">
-                <fa-icon [icon]="_homeIcon()"></fa-icon>
+                <fa-icon [icon]="homeIcon()"></fa-icon>
                 <p>HOME</p>
             </li>
 
             <li [routerLink]="['/ideas']" [routerLinkActive]="'text-[#ace874] underline decoration-2 underline-offset-3'">
-                <fa-icon [icon]="_ideasIcon()"></fa-icon>
+                <fa-icon [icon]="ideasIcon()"></fa-icon>
                 <p>IDEES</p>
             </li>
 
             <li [routerLink]="['/weekend']" [routerLinkActive]="'text-[#ace874] underline decoration-2 underline-offset-3'">
-                <fa-icon [icon]="_weekendIcon()"></fa-icon>
+                <fa-icon [icon]="weekendIcon()"></fa-icon>
                 <p>CAP DE SETMANA</p>
             </li>
 
             <li [routerLink]="['/friends']" [routerLinkActive]="'text-[#ace874] underline decoration-2 underline-offset-3'">
-                <fa-icon [icon]="_friendsIcon()"></fa-icon>
+                <fa-icon [icon]="friendsIcon()"></fa-icon>
                 <p>AMISTATS</p>
             </li>
 

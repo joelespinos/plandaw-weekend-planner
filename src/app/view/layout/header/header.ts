@@ -14,15 +14,15 @@ import { faUserGroup as fasUserGroup } from '@fortawesome/free-solid-svg-icons';
 })
 export class Header {
   // Icons
-  public _homeIcon: Signal<any>;
-  public _ideasIcon: Signal<any>;
-  public _weekendIcon: Signal<any>;
-  public _friendsIcon: Signal<any>;
+  public homeIcon: Signal<any>;
+  public ideasIcon: Signal<any>;
+  public weekendIcon: Signal<any>;
+  public friendsIcon: Signal<any>;
 
   constructor() {
-    this._homeIcon = signal<any>(fasHouse).asReadonly();
-    this._ideasIcon = signal<any>(fasLightbulb).asReadonly();
-    this._weekendIcon = signal<any>(fasUmbrellaBeach).asReadonly();
-    this._friendsIcon = signal<any>(fasUserGroup).asReadonly();
+    this.homeIcon = signal<any>(fasHouse).asReadonly();
+    this.ideasIcon = signal<any>(fasLightbulb).asReadonly();
+    this.weekendIcon = signal<any>(fasUmbrellaBeach).asReadonly();
+    this.friendsIcon = signal<any>(fasUserGroup).asReadonly();
   }
 }

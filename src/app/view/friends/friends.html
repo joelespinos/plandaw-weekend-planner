@@ -1,25 +1,39 @@
-<div class="font-poppins mt-10 ml-10">
-    <h2 class="font-semibold text-3xl text-[#236D4B]">Amistats</h2>
-    <p class="mt-3">Afegeix a tota la teva colla amb el rol que més s'adeqüi a cadascú!</p>
-</div>
+<div class="w-fit font-poppins mt-10 ml-10">
+    <div>
+        <h2 class="font-semibold text-3xl text-[#236D4B]">Amistats</h2>
+        <p class="mt-3">Afegeix a tota la teva colla amb el rol que més s'adeqüi a cadascú!</p>
+    </div>
 
-<div class="">
-    <input type="text" [(ngModel)]="friendName" placeholder="Nom del teu amic o amiga..." class="">
-    <input type="text" [(ngModel)]="friendRole" placeholder="Rol del teu amic o amiga..." class="">
-    <button (click)="addNewFriend()">Afegir nova amistat</button>
+    <div class="w-[550px] mt-5 flex flex-col gap-y-4 border-2 border-gray-200 shadow-md rounded-md p-4
+        [&>input]:border-2 [&>input]:border-gray-300 [&>input]:rounded-md [&>input]:px-2 [&>input]:py-1">
+        <input type="text" [(ngModel)]="friendName" placeholder="Nom del teu amic o amiga..." class="">
+        <input type="text" [(ngModel)]="friendRole" placeholder="Rol del teu amic o amiga..." class="">
+        <button (click)="addNewFriend()" class="bg-[#236D4B] text-[#E9F8E1] rounded p-2 hover:bg-[#1d5f41] hover:cursor-pointer">Afegir nova amistat</button>
+    </div>
+
+    @if (errorMessage().trim() != "") {
+        <div class="flex justify-center items-center">
+            <div class="flex gap-x-2 w-fit mt-5 bg-red-200 text-red-600 border-2 px-5 py-2 rounded">
+                <fa-icon [icon]="infoIcon()"></fa-icon>
+                <p>{{ errorMessage() }}</p>
+            </div>
+        </div>
+    }
 </div>
 
 @if (friendsList().length > 0) {
-    <div class="w-full flex flex-wrap justify-center items-center gap-x-12 gap-y-10 my-8 font-poppins">
-        @for (friend of friendsList(); track friend.id) {
-            <div class="w-[200px] flex justify-evenly items-center gap-x-4 border-2 border-gray-100 shadow-md p-4 rounded-md">
-                <img src="images/default_user_icon.png" alt="Icona d'usuari per defecte" class="w-[60px]">
-                <div class="">
-                    <p class="text-lg"><strong>{{ friend.name }}</strong></p>
-                    <p class="text-sm text-gray-500">{{ friend.role }}</p>
+    <div class="w-full flex justify-center">
+        <div class="w-[94.7%] flex flex-wrap justify-start items-center gap-x-12 gap-y-10 my-8 font-poppins">
+            @for (friend of friendsList(); track friend.id) {
+                <div class="w-fit flex justify-evenly items-center gap-x-4 border-2 border-gray-100 shadow-md px-5 py-4 rounded-md">
+                    <img src="images/default_user_icon.png" alt="Icona d'usuari per defecte" class="w-[60px]">
+                    <div class="">
+                        <p class="text-lg"><strong>{{ friend.name }}</strong></p>
+                        <p class="text-sm text-gray-500">{{ friend.role }}</p>
+                    </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
 } @else {
     <div class="flex justify-center items-center">

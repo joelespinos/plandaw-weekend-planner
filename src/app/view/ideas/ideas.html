@@ -9,19 +9,21 @@
 
 @if (ideasList().length > 0) {
 
-    <div class="w-full flex flex-wrap justify-center items-center gap-x-12 gap-y-10 my-8 font-poppins">
-        @for (idea of ideasList(); track idea.id) {
-            <div class="w-[300px] h-[350px] border-3 border-gray-100 shadow-md p-3 rounded-md">
-                <div class="flex justify-center items-center">
-                    <img [src]="idea.image" [alt]="idea.title" class="w-[265px] h-[150px] object-cover rounded-md">
+    <div class="w-full flex justify-center">
+        <div class="w-[89%] flex flex-wrap justify-start items-center gap-x-12 gap-y-10 my-8 font-poppins">
+            @for (idea of ideasList(); track idea.id) {
+                <div class="w-[300px] h-[350px] border-3 border-gray-100 shadow-md p-3 rounded-md">
+                    <div class="flex justify-center items-center">
+                        <img [src]="idea.image" [alt]="idea.title" class="w-[265px] h-[150px] object-cover rounded-md">
+                    </div>
+                    <p class="text-center text-[#236D4B] font-bold text-lg mt-3 mb-2">{{ idea.title }}</p>
+                    <fa-icon [icon]="idea.favorite ? solidHeartIcon() : regularHeartIcon()" (click)="onChangeFavorite(idea.id)"></fa-icon>
+                    <p>{{ idea.description }}</p>
+                    <p class="mt-2"><strong>Mood: </strong>{{ idea.mood }}</p>
+                    <p><strong>Duració: </strong>{{ idea.duration }}</p>
                 </div>
-                <p class="text-center text-[#236D4B] font-bold text-lg mt-3 mb-2">{{ idea.title }}</p>
-                <fa-icon [icon]="idea.favorite ? solidHeartIcon() : regularHeartIcon()" (click)="onChangeFavorite(idea.id)"></fa-icon>
-                <p>{{ idea.description }}</p>
-                <p class="mt-2"><strong>Mood: </strong>{{ idea.mood }}</p>
-                <p><strong>Duració: </strong>{{ idea.duration }}</p>
-            </div>
-        }
+            }
+        </div>
     </div>
 
 } @else {

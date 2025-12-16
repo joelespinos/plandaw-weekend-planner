@@ -21,11 +21,13 @@ export class Friends {
 
   private _friendName: WritableSignal<string>;
   private _friendRole: WritableSignal<string>;
+  private _errorMessage: WritableSignal<string>;
 
   constructor() {
     this.friendsList = this._friendsManager.friends;
     this._friendName = signal<string>("");
     this._friendRole = signal<string>("");
+    this._errorMessage = signal<string>("");
 
     this.infoIcon = signal<any>(fasCircleInfo).asReadonly();
   }
@@ -38,9 +40,19 @@ export class Friends {
     return this._friendRole;
   }
 
+  public get errorMessage(): Signal<string> {
+    return this._errorMessage.asReadonly();
+  }
+
   public addNewFriend(): void {
-    this._friendsManager.createNewFriend(this._friendName(), this._friendRole());
-    this._friendName.set("");
-    this._friendRole.set("");
+    this._errorMessage.set("");
+    if (this._friendName().trim() != "" && this._friendRole().trim() != "") {
+      this._friendsManager.createNewFriend(this._friendName(), this._friendRole());
+      this._friendName.set("");
+      this._friendRole.set("");
+
+    } else {
+      this._errorMessage.set("Atenció! Hi han camps buits per emplenar!");
+    }
   }
 }

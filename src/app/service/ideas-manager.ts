@@ -22,11 +22,11 @@ export class IdeasManager {
     });
   }
 
-  get ideas(): Signal<Idea[]> {
+  public get ideas(): Signal<Idea[]> {
     return this._ideas.asReadonly();
   }
 
-  get favoriteIdeas(): Signal<Idea[]> {
+  public get favoriteIdeas(): Signal<Idea[]> {
     return this._favoriteIdeas;
   }
 

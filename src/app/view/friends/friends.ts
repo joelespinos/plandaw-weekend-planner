@@ -12,6 +12,11 @@ import { faCircleInfo as fasCircleInfo } from '@fortawesome/free-solid-svg-icons
   styleUrl: './friends.css',
 })
 export class Friends {
+
+  // CONSTANTS
+  private readonly ERROR_EMPTY_FIELDS: string = "Atenció! Hi han camps buits per emplenar!";
+  
+  // SERVICE
   private _friendsManager: FriendsManager = inject(FriendsManager);
 
   // ICONS
@@ -52,7 +57,7 @@ export class Friends {
       this._friendRole.set("");
 
     } else {
-      this._errorMessage.set("Atenció! Hi han camps buits per emplenar!");
+      this._errorMessage.set(this.ERROR_EMPTY_FIELDS);
     }
   }
 }

@@ -14,6 +14,8 @@ import { faCircleInfo as fasCircleInfo } from '@fortawesome/free-solid-svg-icons
   styleUrl: './ideas.css',
 })
 export class Ideas {
+
+  // SERVICE
   private _ideasManager: IdeasManager = inject(IdeasManager);
 
   // ICONS

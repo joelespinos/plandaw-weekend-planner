@@ -15,6 +15,8 @@ import { Idea } from '../../model/idea';
   styleUrl: './favorite-ideas.css',
 })
 export class FavoriteIdeas {
+
+  // SERVICE
   private _ideasManager: IdeasManager = inject(IdeasManager);
 
   // ICONS

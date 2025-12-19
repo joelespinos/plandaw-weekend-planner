@@ -1,5 +1,7 @@
 import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { Idea } from '../model/idea';
+import { Weekend } from '../model/weekend';
+import { single } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +15,7 @@ export class WeekendsManager {
   private _imageNumberCarousel: WritableSignal<number>;
   private _imagePathCarousel: Signal<string>;
   private _altNameCarousel: Signal<string>;
+  private _randomWeekend: WritableSignal<Weekend>;
   
   constructor() {
     this._ideas = signal<Idea[]>([]);
@@ -28,6 +31,8 @@ export class WeekendsManager {
     this._altNameCarousel = computed(() => {
       return this._ideas()[this._imageNumberCarousel()].title;
     });
+
+    this._randomWeekend = signal<Weekend>({});
   }
 
   public set ideas(ideasList: Idea[]) {
@@ -42,13 +47,36 @@ export class WeekendsManager {
     return this._altNameCarousel;
   }
 
+  public get randomWeekend(): Signal<Weekend> {
+    return this._randomWeekend.asReadonly();
+  }
+
   public setPreviousImageCarousel(): void {
     if (this._imageNumberCarousel() == this.FIRST_IMAGE_CAROUSEL) this._imageNumberCarousel.set(this._ideas().length-1);
     else this._imageNumberCarousel.update(currentValue => currentValue-1);
   }
 
   public setNextImageCarousel(): void {
-    if (this._imageNumberCarousel() == this._ideas().length) this._imageNumberCarousel.set(this.FIRST_IMAGE_CAROUSEL);
+    if (this._imageNumberCarousel() == this._ideas().length-1) this._imageNumberCarousel.set(this.FIRST_IMAGE_CAROUSEL);
     else this._imageNumberCarousel.update(currentValue => currentValue+1);
+  }
+
+  public generateWeekend(): void {
+    let firstWeekendIdea = this.getRandomIdea();
+    let secondWeekendIdea = this.getRandomIdea();
+
+    // Si les idees són iguals, torna a generar la segona fins que no ho siguin
+    while (firstWeekendIdea.id == secondWeekendIdea.id) secondWeekendIdea = this.getRandomIdea();
+
+    this._randomWeekend.set({
+      title: firstWeekendIdea.title + " i  " + secondWeekendIdea.title,
+      first_activity: firstWeekendIdea,
+      second_activity: secondWeekendIdea,
+      mood: firstWeekendIdea.mood + ", " + secondWeekendIdea.mood
+    });
+  }
+
+  private getRandomIdea(): Idea {
+    return this._ideas()[Math.floor(Math.random() * this._ideas().length)];
   }
 }

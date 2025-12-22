@@ -44,6 +44,10 @@ export class Weekends {
     return this._isChangingImage.asReadonly();
   }
 
+  public get randomWeekend(): Signal<Weekend> {
+    return this._randomWeekend;
+  }
+
   public onPreviousImage(): void {
     if (!this._isChangingImage()) { // Sols canviar la imatge cuan no hagi cap imatge canvianse
       this._isChangingImage.set(true);

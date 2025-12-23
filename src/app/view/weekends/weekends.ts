@@ -3,17 +3,25 @@ import { Idea } from '../../model/idea';
 import { IdeasManager } from '../../service/ideas-manager';
 import { WeekendsManager } from '../../service/weekends-manager';
 import { Weekend } from '../../model/weekend';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faAngleLeft as faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight as faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-weekends',
-  imports: [],
+  imports: [FontAwesomeModule],
   templateUrl: './weekends.html',
   styleUrl: './weekends.css',
 })
 export class Weekends {
+
   // SERVICE
   private _ideasManager: IdeasManager = inject(IdeasManager);
   private _weekendsManager: WeekendsManager = inject(WeekendsManager);
+
+  // ICONS
+  public previousArrowIcon: Signal<any>;
+  public nextArrowIcon: Signal<any>;
   
   private _imagePathCarousel: Signal<string>;
   private _altNameCarousel: Signal<string>;
@@ -25,6 +33,9 @@ export class Weekends {
   constructor() {
     this.ideasList = this._ideasManager.ideas;
     this._weekendsManager.ideas = this._ideasManager.ideas();
+
+    this.previousArrowIcon = signal<any>(faAngleLeft);
+    this.nextArrowIcon = signal<any>(faAngleRight);
 
     this._imagePathCarousel = this._weekendsManager.imagePathCarousel;
     this._altNameCarousel = this._weekendsManager.altNameCarousel;
@@ -70,6 +81,9 @@ export class Weekends {
 
   public onGenerateWeekend(): void {
     this._weekendsManager.generateWeekend();
-    console.log(this._randomWeekend());
+  }
+
+  public onChangeFavorite(ideaId: number) {
+    this._ideasManager.changeIdeaFavorite(ideaId);
   }
 }

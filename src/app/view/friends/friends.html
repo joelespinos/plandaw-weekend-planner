@@ -14,7 +14,7 @@
     @if (errorMessage().trim() != "") {
         <div class="flex justify-center items-center">
             <div class="flex gap-x-2 w-fit mt-5 bg-red-200 text-red-600 border-2 px-5 py-2 rounded">
-                <fa-icon [icon]="infoIcon()"></fa-icon>
+                <fa-icon [icon]="warnIcon()"></fa-icon>
                 <p>{{ errorMessage() }}</p>
             </div>
         </div>

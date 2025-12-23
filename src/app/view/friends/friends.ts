@@ -4,6 +4,7 @@ import { FriendsManager } from '../../service/friends-manager';
 import { Friend } from '../../model/friend';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleInfo as fasCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { faTriangleExclamation as faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-friends',
@@ -21,6 +22,7 @@ export class Friends {
 
   // ICONS
   public infoIcon: Signal<any>;
+  public warnIcon: Signal<any>;
 
   public friendsList: Signal<Friend[]>;
 
@@ -35,6 +37,7 @@ export class Friends {
     this._errorMessage = signal<string>("");
 
     this.infoIcon = signal<any>(fasCircleInfo).asReadonly();
+    this.warnIcon = signal<any>(faTriangleExclamation).asReadonly();
   }
 
   public get friendName(): WritableSignal<string> {

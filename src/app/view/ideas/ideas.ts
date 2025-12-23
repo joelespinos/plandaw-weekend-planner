@@ -1,4 +1,4 @@
-import { Component, inject, signal, Signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { IdeasManager } from '../../service/ideas-manager';
 import { Idea } from '../../model/idea';
 import { RouterModule } from "@angular/router";
@@ -12,6 +12,7 @@ import { faCircleInfo as fasCircleInfo } from '@fortawesome/free-solid-svg-icons
   imports: [RouterModule, FontAwesomeModule],
   templateUrl: './ideas.html',
   styleUrl: './ideas.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Ideas {
 

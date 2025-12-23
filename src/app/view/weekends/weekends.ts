@@ -1,4 +1,4 @@
-import { Component, inject, Signal, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Signal, signal, WritableSignal } from '@angular/core';
 import { Idea } from '../../model/idea';
 import { IdeasManager } from '../../service/ideas-manager';
 import { WeekendsManager } from '../../service/weekends-manager';
@@ -12,6 +12,7 @@ import { faAngleRight as faAngleRight } from '@fortawesome/free-solid-svg-icons'
   imports: [FontAwesomeModule],
   templateUrl: './weekends.html',
   styleUrl: './weekends.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Weekends {
 

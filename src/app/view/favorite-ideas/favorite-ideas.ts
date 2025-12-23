@@ -1,4 +1,4 @@
-import { Component, inject, signal, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, Signal } from '@angular/core';
 import { IdeasManager } from '../../service/ideas-manager';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
@@ -13,6 +13,7 @@ import { Idea } from '../../model/idea';
   imports: [RouterModule, FontAwesomeModule],
   templateUrl: './favorite-ideas.html',
   styleUrl: './favorite-ideas.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FavoriteIdeas {
 

@@ -1,4 +1,4 @@
-import { Component, inject, signal, Signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FriendsManager } from '../../service/friends-manager';
 import { Friend } from '../../model/friend';
@@ -11,6 +11,7 @@ import { faTriangleExclamation as faTriangleExclamation } from '@fortawesome/fre
   imports: [FormsModule, FontAwesomeModule],
   templateUrl: './friends.html',
   styleUrl: './friends.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Friends {
 

@@ -1,4 +1,4 @@
-import { Component, signal, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, Signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHouse as fasHouse } from '@fortawesome/free-solid-svg-icons'
@@ -11,6 +11,7 @@ import { faUserGroup as fasUserGroup } from '@fortawesome/free-solid-svg-icons';
   imports: [RouterModule, FontAwesomeModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Header {
   // Icons
